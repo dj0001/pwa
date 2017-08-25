@@ -12,5 +12,9 @@ img {width:33%}
 
 <body>
 <a href="https://3dthis.com/gcto3d.htm?url=//raw.githubusercontent.com/dj0001/pwa/gh-pages/test/IMG_20170813_165005.jpg">image</a>
+<script>
+var ref=decodeURIComponent(location.search.slice(1)) || "raw.githubusercontent.com/dj0001/pwa/gh-pages/test/IMG_20170813_165005.jpg"
+location.href="https://3dthis.com/gcto3d.htm?url=//" + ref   // ?url
+</script>
 </body>
 </html>
