@@ -16,7 +16,7 @@ img {width:33%}
 var ref=decodeURIComponent(location.search.slice(1)) || "raw.githubusercontent.com/dj0001/pwa/gh-pages/test/IMG_20170813_165005.jpg"
 if(ref.match(/^raw\./)) ref="//"+ref   //abwärtskompatibel
 if(!ref.match("//")) ref = "//raw.githubusercontent.com/dj0001/pwa/gh-pages/test/"+ref
-location.href="https://3dthis.com/gcto3d.htm?url=//" + ref   // ?url
+location.href="https://3dthis.com/gcto3d.htm?url=" + ref   // ?url
 </script>
 </body>
 </html>
