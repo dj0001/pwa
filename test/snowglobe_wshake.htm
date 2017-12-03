@@ -29,6 +29,7 @@
 				c.width = width;
 				var mp = 0;  //25
 				var particles = [];
+				var file0;  //
 add(25);
 
 function add(n) {
@@ -89,6 +90,7 @@ var myShakeEvent = new Shake();
 	
 	function handleFiles(files) {
     if (files[0].name.match(/\.jpg|\.png|\.JPG/)) { //.type.match(/image.*/)
+if(file0==files[0].name) c.style.transform = "rotate(90deg)"; file0=files[0].name  //reopen
       var img = document.createElement("img");
       img.src = (window.URL || window.webkitURL).createObjectURL(files[0]);
 //bgfb="url("+img.src+") fixed" //no-repeat left top
