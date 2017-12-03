@@ -97,6 +97,7 @@ var myShakeEvent = new Shake();
 document.getElementById("c").style.background="url("+img.src+") 0 / contain fixed"
  }
 }
+if(location.search) document.getElementById("c").style.background="url("+location.search.slice(1)+") 0 / contain fixed"  //?imgurl
 		</script>
 	</body>
 </html>
