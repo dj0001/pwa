@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<html>
+<head>
+<title>strasse</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#5ac1f2">
+<link rel="manifest" href="strasse.manifest">
+<link rel="icon" type="image/png" sizes="256x256" href="strasse.png">
+<style>
+
+</style>
+</head>
+
+<body>
+<!-- <div></div> -->
+<script>
+var sta = new Date("2010-03-22") // 50
+var sto = new Date(top.location.search.slice(1) || Date.now()) // ?2017-02-27
+if (sto.getDay() == 1) {sto = new Date(sto.getTime() + 1)} //korrekt floating point arithmetic
+var dt = sto - sta
+var tmpst2  //
+
+function wo(we) {
+  var tmpz = String.fromCharCode(Math.ceil(7 * (1 - (dt + we * 4233600000 / 7) / 4233600000 % 1) + 96)).replace("g", "")
+  var tmpst = new Date(sto.getTime() + we * 4233600000 / 7 - dt % (4233600000 / 7))
+  tmpst2 = tmpst.toJSON().slice(0, 10) //.replace(/-/g,"")  //  var 
+  var tmpend = new Date(tmpst.getTime() + 4233600000 / 7)
+  var tmpend2 = tmpend.toJSON().slice(0, 10)
+  var cal = "BEGIN:VCALENDAR%0D%0AVERSION:2.0%0D%0ABEGIN:VEVENT%0D%0ADTEND;VALUE=DATE:" + tmpend2.replace(/-/g, "") + "%0D%0ADTSTART;VALUE=DATE:" + tmpst2.replace(/-/g, "") + "%0D%0ALOCATION:50" + tmpz + "%0D%0ARRULE:FREQ=WEEKLY;INTERVAL=7;BYDAY=MO;WKST=MO%0D%0ASUMMARY;LANGUAGE=de:strasse%0D%0AEND:VEVENT%0D%0AEND:VCALENDAR"
+  var tmp = tmpst2 + ' <a download="strasse.ics" href="data:text/calendar,' + cal + '">50' + tmpz + '</a>'
+  return tmp
+}
+
+function show() {
+document.getElementsByTagName("body")[0].innerHTML =
+ wo(0) + "<br>" + wo(1) + "<br>" + wo(2) + "<br>" + wo(3) + "<br>" + wo(4) + "<br>" + wo(5) + "<br>" + wo(6) 
++ "<br><a target='_top' href='#' onclick='next()'>&gt</a>"  //"+top.location.host+top.location.pathname+"?"+tmpst2+"
+}
+
+show();
+
+function next() {
+sto = new Date(tmpst2)
+if (sto.getDay() == 1) {sto = new Date(sto.getTime() + 1)}
+dt = sto - sta
+show()
+}
+</script>
+</body>
+</html>
