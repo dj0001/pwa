@@ -8,7 +8,7 @@ function consume(reader) {
   function pump() {
     return reader.read().then(({done, value}) => {
       if (done) {console.log('fin')
-        return
+        return res // res
       }
       total += value.byteLength
       console.log(`received ${value.byteLength} bytes (${total} bytes in total)`)
