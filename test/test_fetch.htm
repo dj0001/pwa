@@ -11,7 +11,7 @@ function consume(reader) {
         return
       }
       total += value.byteLength
-      log(`received ${value.byteLength} bytes (${total} bytes in total)`)
+      console.log(`received ${value.byteLength} bytes (${total} bytes in total)`)
       return pump()
     })
   }
