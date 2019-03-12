@@ -18,7 +18,7 @@ function consume(reader) {
 }
 
 fetch("IMG_20170813_165005.jpg")  //IMG_20170815_140619.jpg
-  .then(res => {if(res.body) consume(res.body.getReader()); else return res})
+  .then(res => {if(res.body) consume(res.body.getReader()); return res})  //else 
   .then(res => res.blob())
   .then(blob => im.src=URL.createObjectURL(blob))
   .catch(e => console.log("something went wrong: " + e))
