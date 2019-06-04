@@ -1,0 +1,21 @@
+test
+<img src='artwork-96.png'>
+
+<script>
+var audio=new Audio()
+audio.src='Kaltenberg.mp3'
+
+
+document.onclick=function(){
+audio.play();
+/* */
+navigator.mediaSession.metadata = new MediaMetadata({
+  title: "Episode Title96",
+  artist: "Podcast Host",
+  album: "Podcast Title"
+  ,artwork: [{src: "artwork-96.png"}]  //128, 256
+});
+/* */
+
+}
+</script>
