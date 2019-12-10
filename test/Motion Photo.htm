@@ -20,9 +20,9 @@ blobtovid(blob)
 
 async function imgtoblob(img) 
 {
-  let response = await fetch(img);
-  let data = await response.arrayBuffer()
-  return buffertoblob(data);
+ let response = await fetch(img);
+ let data = await response.arrayBuffer()
+ return buffertoblob(data);
 }
 
 function buffertoblob(data) {
