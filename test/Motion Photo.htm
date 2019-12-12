@@ -34,7 +34,7 @@ function buffertoblob(data) {
 
 function blobtovid(blob) {
  const vid=document.createElement("video");
- vid.loop = true; vid.preload = 'auto'; vid.controls = true
+ vid.loop = true; vid.preload = 'auto'; vid.controls = true; vid.currentTime=1  //hide Overlay Play button in FF
  vid.src=window.URL.createObjectURL(blob);
  if('pictureInPictureEnabled' in document && !img) vid.onloadedmetadata = (e) => vid.requestPictureInPicture(); else document.body.append(vid)
 }
