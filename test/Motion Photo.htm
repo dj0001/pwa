@@ -4,19 +4,27 @@
 <meta charset=UTF-8 />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Motion Photo Viewer</title>
-<style>video {max-height:100vh} </style>
 </head>
 
 <body>
-<input type="file" onchange="handleFiles(this.files)" accept="image/*,video/mp4" multiple>
+<input type="file" onchange="handleFiles(this.files)" accept="image/*,video/mp4" multiple> <!-- optional -->
 </body>
 
 <script>  //Copyright 2019 dj  ,License BSD 2-Clause
-var img=location.search.slice(1)
-if(img) imgtoblob(img)
-  .then(blob => {
-blobtovid(blob)
-  });
+function handleFiles(files) {  //optional
+for (let i = 0; i < files.length; i++) {
+const reader = new FileReader();
+reader.onload = function(evt) {
+ var blob=buffertoblob(evt.target.result)
+ blobtovid(blob)
+ }
+reader.readAsArrayBuffer(files[i])
+}
+}
+
+const multiple=true; //edit here
+
+var ls=location.search; if(ls.slice(0,4)=='?MV=') imgtoblob(ls.slice(4)).then(blob => blobtovid(blob))  //?MV=MV...jpg
 
 async function imgtoblob(img) 
 {
@@ -33,22 +41,21 @@ function buffertoblob(data) {
 }
 
 function blobtovid(blob) {
- const vid=document.createElement("video");
- vid.loop = true; vid.preload = 'auto'; vid.controls = true; vid.currentTime=1  //hide Overlay Play button in FF
- vid.src=window.URL.createObjectURL(blob);
- if('pictureInPictureEnabled' in document && !img) vid.onloadedmetadata = (e) => vid.requestPictureInPicture(); else document.body.append(vid)
+ if(document.querySelector('video') && !multiple) {document.querySelector('video').src=URL.createObjectURL(blob); return}
+ const vid=document.createElement("video") ,ref=document.querySelector('ul')||document.body  //HFS2.4
+ vid.loop = true; vid.preload = 'auto'; vid.controls = true
+ vid.style = 'max-height:100vh'
+ vid.src=URL.createObjectURL(blob);
+ vid.currentTime=1  //hide Overlay Play button
+ ref.append(vid)
 }
 
-function handleFiles(files) {
-if(files.length>1) img=true  //
-for (let i = 0; i < files.length; i++) {
-const reader = new FileReader();
-reader.onload = function(evt) {
- var blob=buffertoblob(evt.target.result)
- blobtovid(blob)
- }
-reader.readAsArrayBuffer(files[i])
-}
-}
+const ref=document.querySelector('#files')||document.body
+ref.addEventListener('click', function(){
+const img=event.target.getAttribute('href')
+if(event.target.tagName!='A' || !/(^|\/)MV.+\.jpg$/.test(img)) return  //motion photos beginns with MV
+event.preventDefault() 
+imgtoblob(img).then(blob => blobtovid(blob));
+})
 </script>
 </html>
