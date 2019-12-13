@@ -16,7 +16,7 @@ for (let i = 0; i < files.length; i++) {
 const reader = new FileReader();
 reader.onload = function(evt) {
  var blob=buffertoblob(evt.target.result)
- blobtovid(blob)
+ blobtovid(blob,files[i].name)
  }
 reader.readAsArrayBuffer(files[i])
 }
@@ -40,12 +40,14 @@ function buffertoblob(data) {
   return blob;
 }
 
-function blobtovid(blob) {
+function blobtovid(blob,fn) {
  if(document.querySelector('video') && !multiple) {document.querySelector('video').src=URL.createObjectURL(blob); return}
  const vid=document.createElement("video") ,ref=document.querySelector('ul')||document.body  //HFS2.4
  vid.loop = true; vid.preload = 'auto'; vid.controls = true
  vid.style = 'max-height:100vh'
  vid.src=URL.createObjectURL(blob);
+ vid.title = fn||''
+ try {blob=new File([blob], fn+'.mp4' ,{type:"video/mp4"})} catch (e) {console.log(e)}  //FF
  vid.currentTime=1  //hide Overlay Play button
  ref.append(vid)
 }
