@@ -1,0 +1,14 @@
+<html>
+
+<div></div>
+
+<script>
+window.addEventListener('devicemotion', event => {
+  console.log(event.acceleration.y + ' m/s2');
+  document.querySelector('div').textContent=event.acceleration.y
+});
+
+
+
+</script>
+</html>
