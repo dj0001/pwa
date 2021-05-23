@@ -12,7 +12,7 @@ window.addEventListener('devicemotion', event => {
   a0=event.acceleration.y
 });
 
-
+document.querySelector('div').onclick=function(){navigator.wakeLock.request('screen')}
 
 </script>
 </html>
