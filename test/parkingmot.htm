@@ -8,7 +8,7 @@ var a0
 window.addEventListener('devicemotion', event => {
   console.log(event.acceleration.y + ' m/s2');
   //document.querySelector('div').textContent=event.acceleration.y
-  if (event.acceleration.y==0 && event.acceleration.y!=a0) document.querySelector('div').textContent=new Date()
+  if (event.acceleration.y==0 && event.acceleration.y!=a0) document.querySelector('div').textContent=new Date().toJSON().slice(11,16)
   a0=event.acceleration.y
 });
 
