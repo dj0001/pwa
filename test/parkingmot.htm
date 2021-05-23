@@ -21,7 +21,7 @@ window.addEventListener('devicemotion', event => {
   console.log(event.acceleration.y + ' m/s2');
   //document.querySelector('div').textContent=event.acceleration.y
   if (event.acceleration.y==0 && event.acceleration.y!=a0) document.querySelector('div').textContent=new Date(Math.ceil(new Date().getTime()/1800000)*1800000).toLocaleTimeString().slice(0,-3)
-  else document.querySelector('div').textContent='--:--'
+  if (event.acceleration.y!=0) document.querySelector('div').textContent='--:--'
   a0=event.acceleration.y
 });
 
