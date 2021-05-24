@@ -21,13 +21,13 @@ var a0, i=0
 window.addEventListener('devicemotion', event => {
   console.log(event.acceleration.y + ' m/s2');
   //document.querySelector('div').textContent=event.acceleration.y
-  if (event.acceleration.y==0 && event.acceleration.y!=a0) document.querySelector('div').textContent=new Date(Math.ceil(new Date().getTime()/1800000)*1800000).toLocaleTimeString().slice(0,-3)
+  if (event.acceleration.y==0 && event.acceleration.y!=a0) document.querySelector('div').textContent=new Date(Math.ceil(new Date().getTime()/1800000)*1800000).toTimeString().slice(0,5)
   if (event.acceleration.y!=0) {document.querySelector('div').textContent='--:--'; i=0}
   a0=event.acceleration.y
 });
 
 document.querySelector('div').oncontextmenu=function(){navigator.wakeLock.request('screen')}
-document.querySelector('div').onclick=function(){i++; document.querySelector('div').textContent=new Date(Math.ceil(new Date().getTime()/1800000)*1800000+i*1800000).toLocaleTimeString().slice(0,-3)}  //P
+document.querySelector('div').onclick=function(){i++; document.querySelector('div').textContent=new Date(Math.ceil(new Date().getTime()/1800000)*1800000+i*1800000).toTimeString().slice(0,5)}  //P
 
 </script>
 </html>
