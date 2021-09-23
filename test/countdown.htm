@@ -8,7 +8,7 @@ Noch <span id="demo"></span> Tage
 
 <script>
 const a=location.search.slice(1,11)  //'2021-11-15'
-const d = ((new Date(a) - Date.now())/8.64e7).toFixed();
+const d = ((new Date(a) - Date.now())/8.64e7).toPrecision(3);
 document.getElementById("demo").innerHTML = d;
 </script>
 
