@@ -11,7 +11,7 @@ function s(){
 document.getElementById("demo").innerHTML=((new Date(a) - Date.now())/8.64e7).toPrecision(3)
 }
   
-const a=location.search.slice(1,11)  //'2021-11-15'
+const a=new URLSearchParams(location.search).get('time')||location.search.slice(1,11)  //'2021-11-15'
 setInterval(s,86400)
 s()
 </script>
