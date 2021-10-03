@@ -8,7 +8,8 @@ Noch <span id="count"></span>
 
 <script>
 function s(){
-document.getElementById("count").innerHTML=
+var dis=new Date(a) - Date.now()
+  document.getElementById("count").innerHTML=
   Math.floor(dis / (1000 * 60 * 60 * 24))+'d '
   +((dis % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toPrecision(3)+'h'
   //((new Date(a) - Date.now())/8.64e7).toPrecision(3)
