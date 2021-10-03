@@ -5,10 +5,11 @@
 
 
 Noch <span id="count"></span>
+<br><input type="datetime-local" id="d1">
 
 <script>
 function s(){
-var dis=new Date(a) - Date.now()
+var dis=new Date(d1.value) - Date.now()
   document.getElementById("count").innerHTML=
   Math.floor(dis / (1000 * 60 * 60 * 24))+'d '
   +((dis % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toPrecision(3)+'h'
@@ -16,6 +17,7 @@ var dis=new Date(a) - Date.now()
 }
   
 const a=new URLSearchParams(location.search).get('time')||location.search.slice(1,11)||Date.now()  //'2021-11-15'
+d1.value=a
 setInterval(s,86400)
 s()
 </script>
