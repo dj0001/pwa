@@ -18,7 +18,7 @@ var dis=new Date(d1.value) - Date.now()
   
 const a=new URLSearchParams(location.search).get('time')||location.search.slice(1,11)||new Date().toJSON().slice(0,-1)  //'2021-11-15'
 d1.value=a
-d1.value=d1.value||new Date(Date.parse(new URLSearchParams(location.search).get('time'))).toJSON().slice(0,-1)  //fix
+d1.value=d1.value||new Date(Date.parse(a)).toJSON().slice(0,-1)  //fix
 setInterval(s,36000)
 s()
 </script>
