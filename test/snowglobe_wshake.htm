@@ -99,7 +99,7 @@ if(file0==files[0].name) c.style.transform = "rotate(90deg)"; file0=files[0].nam
 document.getElementById("c").style.background="url("+img.src+") 0 / contain fixed"
  }
 }
-if(location.search) document.getElementById("c").style.background="url("+location.search.slice(1)+") 0 / contain fixed"  //?imgurl
+if(location.search) document.getElementById("c").style.background="url("+decodeURIComponent(location.search.slice(1).replace(/\&.*/,''))+") 0 / contain fixed"  //?imgurl
 		</script>
 	</body>
 </html>
