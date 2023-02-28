@@ -5,6 +5,9 @@
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="icon" sizes="192x192" href="/icon.png">
 <title>Countdown</title>
+<style>
+#count {font-size: 2em; font-family:Helvetica;}
+</style>
 </head>
 <body>
 
@@ -17,8 +20,8 @@ Noch <span id="count"></span>
 function s(){
 var dis=new Date(d1.value) - Date.now()
   document.getElementById("count").innerHTML=
-  Math.floor(Math.abs(dis) / (1000 * 60 * 60 * 24))+'d '
-  +((dis % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toPrecision(3)+'h'
+  Math.floor(Math.abs(dis) / (1000 * 60 * 60 * 24))+' d '
+  +((dis % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toPrecision(3)+' h'
   //((new Date(a) - Date.now())/8.64e7).toPrecision(3)
 }
   
